@@ -13,7 +13,12 @@
     "version": "2.1",
     "lastUpdated": "2026-05-12",
     "status": "active",
-    "tags": ["riparian", "buffer", "harvest planning", "pyt"],
+    "tags": [
+      "riparian",
+      "buffer",
+      "harvest planning",
+      "pyt"
+    ],
     "links": [
       {
         "label": "Demo video",
@@ -30,16 +35,21 @@
     "name": "Block Area Report",
     "description": "Summarizes net and gross area by cutblock and produces a formatted Excel report for submission.",
     "location": "https://github.com/sigg/block-area-report",
-    "howTo": "https://example.com/docs/block-area-report",
     "contact": {
-      "name": "Alex Chen"
+      "name": "Alex Chen",
+      "email": "test@gov.bc.ca"
     },
     "userGroup": "Timber development",
-    "version": "1.0",
-    "lastUpdated": "2026-03-30",
     "status": "active",
-    "tags": ["reporting", "area", "cutblock", "excel"],
-    "links": []
+    "lastUpdated": "2026-03-30",
+    "version": "1.0",
+    "howTo": "https://example.com/docs/block-area-report",
+    "tags": [
+      "reporting",
+      "area",
+      "cutblock",
+      "excel"
+    ]
   },
   {
     "id": "road-deactivation-mapper",
@@ -54,7 +64,11 @@
     "version": "0.3-beta",
     "lastUpdated": "2026-06-09",
     "status": "in-development",
-    "tags": ["roads", "deactivation", "mapping"],
+    "tags": [
+      "roads",
+      "deactivation",
+      "mapping"
+    ],
     "links": [
       {
         "label": "Design notes",
