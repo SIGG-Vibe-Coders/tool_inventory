@@ -157,5 +157,35 @@
     "tested": false,
     "status": "in-development",
     "lastUpdated": "2026-06-03"
+  },
+  {
+    "id": "toc-consoltation-tools",
+    "name": "TOC Consoltation Tools",
+    "description": "Tools to create referral packages, letters, maps, spatial for the Consultation process in TOC. For Stakeholders and First NAtions",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Consultation_Tools\\TOC\\repo",
+    "contact": {
+      "name": "Kieran Watts",
+      "email": "kieran.watts@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-03"
+  },
+  {
+    "id": "cso-reporting",
+    "name": "CSO Reporting",
+    "description": "An Access Database that was made with the CSO's to help them support their work",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\Reporting\\!CSO_Reporting.accde",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-17",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\CSO_Reporting\\CSO_reporting_master.accdb",
+    "comments": "When making changes make them to the Master accdb then save as accde file an overwrite the file in the reporting folder"
   }
 ]
