@@ -1,0 +1,17 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node (only used by the CI validator; not needed in the repo)
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# Python local server / tooling
+__pycache__/
+*.pyc
+
+# Local env / secrets (none expected, but just in case)
+.env
+*.local

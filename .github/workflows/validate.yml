@@ -1,0 +1,31 @@
+name: Validate tools.json
+
+on:
+  push:
+    paths:
+      - "data/tools.json"
+      - "data/schema.json"
+      - ".github/workflows/validate.yml"
+  pull_request:
+    paths:
+      - "data/tools.json"
+      - "data/schema.json"
+      - ".github/workflows/validate.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install validator
+        run: npm install ajv@8 ajv-formats@3
+
+      - name: Validate data/tools.json against schema
+        run: node .github/workflows/validate-tools.mjs

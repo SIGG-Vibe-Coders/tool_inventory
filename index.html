@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIGG Tool Inventory</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>SIGG Tool Inventory</h1>
+        <p class="tagline">Find a tool, learn what it does, where it lives, and who to contact.</p>
+      </div>
+      <a class="btn btn-secondary" href="editor.html">Add / edit tools</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls" aria-label="Search and filters">
+      <div class="search-row">
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Search by name, description, tag, contact, user group…"
+          autocomplete="off"
+          aria-label="Search tools"
+        />
+        <label class="sort-control">
+          <span>Sort</span>
+          <select id="sort-select" aria-label="Sort tools">
+            <option value="name-asc">Name (A–Z)</option>
+            <option value="name-desc">Name (Z–A)</option>
+            <option value="updated-desc">Recently updated</option>
+            <option value="updated-asc">Oldest updated</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filter-row">
+        <div class="filter-group" id="status-filters" aria-label="Filter by status">
+          <span class="filter-label">Status:</span>
+          <!-- status buttons injected by JS -->
+        </div>
+        <div class="filter-group" id="tag-filters" aria-label="Filter by tag">
+          <span class="filter-label">Tags:</span>
+          <!-- tag chips injected by JS -->
+        </div>
+      </div>
+
+      <div class="results-meta">
+        <span id="result-count" aria-live="polite"></span>
+        <button type="button" id="clear-filters" class="link-btn" hidden>Clear filters</button>
+      </div>
+    </section>
+
+    <section id="results" class="results-grid" aria-label="Tool list"></section>
+
+    <div id="empty-state" class="empty-state" hidden>
+      <p>No tools match your search.</p>
+    </div>
+
+    <div id="error-state" class="error-state" hidden>
+      <p>Could not load the tool inventory. Please try again later.</p>
+    </div>
+  </main>
+
+  <!-- Detail modal -->
+  <div id="detail-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+      <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+      <div id="detail-content"><!-- detail injected by JS --></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>SIGG Tool Inventory &middot; Maintained by the SIGG team</p>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

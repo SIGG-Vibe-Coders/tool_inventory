@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Tools &middot; SIGG Tool Inventory</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Edit Tool Inventory</h1>
+        <p class="tagline">Add, edit or remove tools, then download the updated file.</p>
+      </div>
+      <a class="btn btn-secondary" href="index.html">Back to inventory</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="editor-intro">
+      <h2>How saving works</h2>
+      <p>
+        This page edits a working copy in your browser. Nothing is saved until you
+        download the file and upload it to GitHub. Your changes become a commit, so
+        everything stays reviewable and reversible.
+      </p>
+      <ol>
+        <li>Make your changes below (add, edit, or delete tools).</li>
+        <li>Click <strong>Download tools.json</strong>.</li>
+        <li>
+          In the GitHub repo, open <code>data/tools.json</code>, choose
+          <em>Upload / replace file</em>, and commit. (See the README for screenshots.)
+        </li>
+      </ol>
+    </section>
+
+    <div class="editor-toolbar">
+      <button type="button" id="add-tool" class="btn btn-primary">+ Add tool</button>
+      <button type="button" id="reload" class="btn btn-ghost">Reload from file</button>
+      <span class="spacer"></span>
+      <span id="dirty-flag" class="dirty-flag" hidden>Unsaved changes</span>
+      <button type="button" id="download" class="btn btn-primary">Download tools.json</button>
+    </div>
+
+    <div id="load-error" class="form-banner" hidden>
+      Could not load <code>data/tools.json</code>. Start a new list with “Add tool”.
+    </div>
+
+    <div class="tool-table-wrap">
+      <table class="tool-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>User group</th>
+            <th>Updated</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tool-rows"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Edit form modal -->
+  <div id="form-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="form-title">
+      <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+      <h2 id="form-title">Add tool</h2>
+      <div id="form-banner" class="form-banner" hidden></div>
+      <form id="tool-form" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="f-name">Name <span class="req">*</span></label>
+            <input type="text" id="f-name" name="name" />
+            <span class="field-error" data-error-for="name"></span>
+          </div>
+          <div class="form-field">
+            <label for="f-id">ID (slug) <span class="req">*</span></label>
+            <input type="text" id="f-id" name="id" placeholder="auto from name" />
+            <span class="field-hint">Lowercase, hyphens only. Must be unique.</span>
+            <span class="field-error" data-error-for="id"></span>
+          </div>
+          <div class="form-field full">
+            <label for="f-description">Description <span class="req">*</span></label>
+            <textarea id="f-description" name="description"></textarea>
+            <span class="field-error" data-error-for="description"></span>
+          </div>
+          <div class="form-field full">
+            <label for="f-location">Location (network path or URL) <span class="req">*</span></label>
+            <input type="text" id="f-location" name="location" />
+            <span class="field-error" data-error-for="location"></span>
+          </div>
+          <div class="form-field">
+            <label for="f-contact-name">Contact name <span class="req">*</span></label>
+            <input type="text" id="f-contact-name" name="contactName" />
+            <span class="field-error" data-error-for="contactName"></span>
+          </div>
+          <div class="form-field">
+            <label for="f-contact-email">Contact email</label>
+            <input type="email" id="f-contact-email" name="contactEmail" />
+            <span class="field-error" data-error-for="contactEmail"></span>
+          </div>
+          <div class="form-field">
+            <label for="f-user-group">User group <span class="req">*</span></label>
+            <input type="text" id="f-user-group" name="userGroup" />
+            <span class="field-error" data-error-for="userGroup"></span>
+          </div>
+          <div class="form-field">
+            <label for="f-status">Status <span class="req">*</span></label>
+            <select id="f-status" name="status">
+              <option value="active">Active</option>
+              <option value="in-development">In development</option>
+              <option value="deprecated">Deprecated</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="f-version">Version</label>
+            <input type="text" id="f-version" name="version" />
+          </div>
+          <div class="form-field">
+            <label for="f-last-updated">Last updated <span class="req">*</span></label>
+            <input type="date" id="f-last-updated" name="lastUpdated" />
+            <span class="field-error" data-error-for="lastUpdated"></span>
+          </div>
+          <div class="form-field full">
+            <label for="f-how-to">How-to link</label>
+            <input type="text" id="f-how-to" name="howTo" />
+            <span class="field-error" data-error-for="howTo"></span>
+          </div>
+          <div class="form-field full">
+            <label for="f-tags">Tags (comma-separated)</label>
+            <input type="text" id="f-tags" name="tags" placeholder="riparian, buffer, pyt" />
+          </div>
+
+          <div class="links-editor">
+            <h4>Links (videos, docs, etc.)</h4>
+            <div id="links-rows"></div>
+            <button type="button" id="add-link" class="icon-btn">+ Add link</button>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save tool</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>SIGG Tool Inventory &middot; Editor</p>
+  </footer>
+
+  <script src="assets/js/editor.js"></script>
+</body>
+</html>
