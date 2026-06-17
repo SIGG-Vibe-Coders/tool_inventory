@@ -58,5 +58,30 @@
         "url": "https://example.com/docs/road-deactivation-notes"
       }
     ]
+  },
+  {
+    "id": "list-genie",
+    "name": "List Genie",
+    "description": "Converts text strings, or excel lists into def queries",
+    "location": "https://mr-robotto-66.github.io/List-Genie/",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-02-18",
+    "scriptLocation": "\\\\bctsdata\\data\\toc_root\\GIS_Workspace\\Daniel\\Mr_Robotto_Github\\List_Genie",
+    "links": [
+      {
+        "label": "How to Video",
+        "url": "https://bcgov.sharepoint.com/sites/FOR-BCTSGIS/_layouts/15/stream.aspx?id=%2Fsites%2FFOR%2DBCTSGIS%2FSIGG%20Document%20Library%2FVideos%2FSouth%20Area%20Tools%2FList%20Genie%20v2%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ef5d2823b%2D1e9d%2D495c%2Db515%2D449595ca8589"
+      },
+      {
+        "label": "Query Builder to Working set using list genie",
+        "url": "https://bcgov.sharepoint.com/sites/FOR-BCTSGIS/_layouts/15/stream.aspx?id=%2Fsites%2FFOR%2DBCTSGIS%2FSIGG%20Document%20Library%2FVideos%2FLRM%20Tips%20and%20Tricks%2FExcel%20to%20LRM%20Query%20Builder%20to%20Working%20Set%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E72f66f4f%2Dcf29%2D4820%2D9bdd%2Dfed6383fc849"
+      }
+    ]
   }
 ]
