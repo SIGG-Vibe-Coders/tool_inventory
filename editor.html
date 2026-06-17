@@ -11,7 +11,7 @@
     <div class="header-inner">
       <div class="brand">
         <h1>Edit Tool Inventory</h1>
-        <p class="tagline">Add, edit or remove tools, then download the updated file.</p>
+        <p class="tagline">Add, edit or remove tools, then save the changes to GitHub.</p>
       </div>
       <a class="btn btn-secondary" href="index.html">Back to inventory</a>
     </div>
@@ -27,14 +27,12 @@
       <p id="intro-disconnected">
         Edit your tools below, then publish the changes back to GitHub. The quickest way is
         to <strong>Connect to GitHub</strong> once &mdash; after that, <strong>Save to GitHub</strong>
-        publishes your changes in a single click. You can also <strong>Download</strong> the file
-        and upload it manually if you prefer.
+        publishes your changes in a single click.
       </p>
     </section>
 
     <div class="editor-toolbar">
       <button type="button" id="add-tool" class="btn btn-primary">+ Add tool</button>
-      <button type="button" id="reload" class="btn btn-ghost">Reload from file</button>
       <span class="spacer"></span>
       <span id="gh-status" class="gh-status">
         <span class="gh-dot" aria-hidden="true"></span>
@@ -44,7 +42,6 @@
       </span>
       <span id="dirty-flag" class="dirty-flag" hidden>Unsaved changes</span>
       <button type="button" id="save-github" class="btn btn-primary">Save to GitHub</button>
-      <button type="button" id="download" class="btn btn-ghost">Download</button>
     </div>
 
     <div id="load-error" class="form-banner" hidden>

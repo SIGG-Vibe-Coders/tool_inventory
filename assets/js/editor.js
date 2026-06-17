@@ -35,8 +35,6 @@
   const els = {
     rows: document.getElementById("tool-rows"),
     addTool: document.getElementById("add-tool"),
-    reload: document.getElementById("reload"),
-    download: document.getElementById("download"),
     saveGithub: document.getElementById("save-github"),
     dirtyFlag: document.getElementById("dirty-flag"),
     loadError: document.getElementById("load-error"),
@@ -344,7 +342,7 @@
     setDirty(true);
     renderTable();
     closeForm();
-    showToast("Tool saved to working copy. Remember to download.");
+    showToast("Tool saved to working copy. Remember to Save to GitHub.");
   });
 
   // Auto-fill slug suggestion from name when ID is empty (add mode only).
@@ -357,20 +355,6 @@
   // ---------- Serialize ----------
   function serialize() {
     return JSON.stringify(state.tools, null, 2) + "\n";
-  }
-
-  // ---------- Download ----------
-  function download() {
-    const blob = new Blob([serialize()], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "tools.json";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-    showToast("Downloaded tools.json — upload it to GitHub to publish.");
   }
 
   // ---------- GitHub: token storage ----------
@@ -542,7 +526,7 @@
 
       if (putRes.status === 409) {
         throw new Error(
-          "The file changed on GitHub since you loaded it. Click “Reload from file”, redo your changes, then save again."
+          "The file changed on GitHub since you loaded it. Reload the page, redo your changes, then save again."
         );
       }
       if (putRes.status === 403) {
@@ -568,7 +552,6 @@
 
   // ---------- Events ----------
   els.addTool.addEventListener("click", () => openForm(null));
-  els.download.addEventListener("click", download);
   els.saveGithub.addEventListener("click", saveToGitHub);
 
   els.ghConnect.addEventListener("click", openConnectModal);
@@ -579,16 +562,6 @@
   });
   els.connectModal.addEventListener("click", (e) => {
     if (e.target.hasAttribute("data-close-connect")) closeConnectModal();
-  });
-
-  els.reload.addEventListener("click", () => {
-    if (
-      state.dirty &&
-      !confirm("Reload from file and discard unsaved changes?")
-    ) {
-      return;
-    }
-    loadTools();
   });
 
   els.modal.addEventListener("click", (e) => {
