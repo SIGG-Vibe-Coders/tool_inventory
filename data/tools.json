@@ -65,5 +65,97 @@
     "lastUpdated": "2026-06-03",
     "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\gar_analysis\\repo",
     "comments": "test"
+  },
+  {
+    "id": "add-layer-to-map-tool",
+    "name": "Add Layer to Map Tool",
+    "description": "simple tool where you can select DBP06, BCGW, or local and add the direct path to the layer you want to add and it will add to to your map window automatically.",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\Library\\South_Tools_ArcPro.atbx",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": false,
+    "status": "in-development",
+    "lastUpdated": "2026-03-01",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools",
+    "comments": "Need to look into this one, doesn't seem to be working properly since the transition"
+  },
+  {
+    "id": "avast-prep-netdowns",
+    "name": "AVAST_prep_netdowns",
+    "description": "This is for prepping the netdown section of AVAST with the GAR analysis data in TOC",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\AVAST_prep_netdowns\\AVAST_Netdown.atbx",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "in-development",
+    "lastUpdated": "2026-06-17",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\AVAST_prep_netdowns",
+    "comments": "Need to test this one, might not be working after the transition"
+  },
+  {
+    "id": "block-export",
+    "name": "Block Export",
+    "description": "TOC tool for exporting Blocks and/or roads to KML",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Block_export\\repo\\BlockExport.pyt",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-05-13",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Block_export\\repo",
+    "comments": "Need a video for this one, could also be better. Kind of a shit tool"
+  },
+  {
+    "id": "bookmarks2fc",
+    "name": "Bookmarks2FC",
+    "description": "Converts Bookmarks in ArcPro to a feature class of polygons. Useful to create extents for data driven pages",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Bookmarks2FC",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-04-20",
+    "comments": "Could use a short video"
+  },
+  {
+    "id": "calendar-app",
+    "name": "Calendar App",
+    "description": "Creates a html calendar of LRM activities.",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Calendar_app",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "deprecated",
+    "lastUpdated": "2024-09-13",
+    "comments": "Is anyone still using this, who knows?"
+  },
+  {
+    "id": "consolidated-cutblocks",
+    "name": "Consolidated_Cutblocks",
+    "description": "A tool to create consolidated cutblocks that is much more complex than previous CC tools",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Consolidated_Cutblocks_v2\\supporting_data",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": false,
+    "status": "in-development",
+    "lastUpdated": "2026-06-03"
   }
 ]
