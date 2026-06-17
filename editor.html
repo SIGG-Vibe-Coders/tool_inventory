@@ -127,9 +127,14 @@
             <span class="field-error" data-error-for="description"></span>
           </div>
           <div class="form-field full">
-            <label for="f-location">Location (network path or URL) <span class="req">*</span></label>
+            <label for="f-location">Tool location (network path or URL) <span class="req">*</span></label>
             <input type="text" id="f-location" name="location" />
             <span class="field-error" data-error-for="location"></span>
+          </div>
+          <div class="form-field full">
+            <label for="f-script-location">Script location (network path or URL)</label>
+            <input type="text" id="f-script-location" name="scriptLocation" />
+            <span class="field-error" data-error-for="scriptLocation"></span>
           </div>
           <div class="form-field">
             <label for="f-contact-name">Contact name <span class="req">*</span></label>
@@ -143,7 +148,12 @@
           </div>
           <div class="form-field">
             <label for="f-user-group">User group <span class="req">*</span></label>
-            <input type="text" id="f-user-group" name="userGroup" />
+            <select id="f-user-group" name="userGroup">
+              <option value="All">All</option>
+              <option value="TOC">TOC only</option>
+              <option value="TKA">TKA only</option>
+              <option value="TKO">TKO only</option>
+            </select>
             <span class="field-error" data-error-for="userGroup"></span>
           </div>
           <div class="form-field">
@@ -155,8 +165,13 @@
             </select>
           </div>
           <div class="form-field">
-            <label for="f-version">Version</label>
-            <input type="text" id="f-version" name="version" />
+            <label for="f-tested">Tested and works? <span class="req">*</span></label>
+            <select id="f-tested" name="tested">
+              <option value="">Select…</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+            <span class="field-error" data-error-for="tested"></span>
           </div>
           <div class="form-field">
             <label for="f-last-updated">Last updated <span class="req">*</span></label>
@@ -164,13 +179,8 @@
             <span class="field-error" data-error-for="lastUpdated"></span>
           </div>
           <div class="form-field full">
-            <label for="f-how-to">How-to link</label>
-            <input type="text" id="f-how-to" name="howTo" />
-            <span class="field-error" data-error-for="howTo"></span>
-          </div>
-          <div class="form-field full">
-            <label for="f-tags">Tags (comma-separated)</label>
-            <input type="text" id="f-tags" name="tags" placeholder="riparian, buffer, pyt" />
+            <label for="f-comments">Other comments</label>
+            <textarea id="f-comments" name="comments"></textarea>
           </div>
 
           <div class="links-editor">

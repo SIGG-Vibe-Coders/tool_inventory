@@ -4,21 +4,15 @@
     "name": "Riparian Buffer Tool",
     "description": "Generates riparian management area buffers around mapped streams and lakes for harvest planning. Reads stream classification and applies the appropriate buffer width per class.",
     "location": "\\\\sigg-gis\\Tools\\RiparianBuffer\\RiparianBuffer.pyt",
-    "howTo": "https://example.com/docs/riparian-buffer-howto",
+    "scriptLocation": "\\\\sigg-gis\\Tools\\RiparianBuffer\\src\\riparian_buffer.py",
     "contact": {
       "name": "Jane Smith",
       "email": "jane.smith@example.gov.bc.ca"
     },
-    "userGroup": "Planning foresters",
-    "version": "2.1",
+    "userGroup": "All",
+    "tested": true,
     "lastUpdated": "2026-05-12",
     "status": "active",
-    "tags": [
-      "riparian",
-      "buffer",
-      "harvest planning",
-      "pyt"
-    ],
     "links": [
       {
         "label": "Demo video",
@@ -39,17 +33,11 @@
       "name": "Alex Chen",
       "email": "test@gov.bc.ca"
     },
-    "userGroup": "Timber development",
-    "status": "active",
+    "userGroup": "All",
+    "tested": true,
     "lastUpdated": "2026-03-30",
-    "version": "1.0",
-    "howTo": "https://example.com/docs/block-area-report",
-    "tags": [
-      "reporting",
-      "area",
-      "cutblock",
-      "excel"
-    ]
+    "status": "active",
+    "links": []
   },
   {
     "id": "road-deactivation-mapper",
@@ -60,15 +48,10 @@
       "name": "Priya Patel",
       "email": "priya.patel@example.gov.bc.ca"
     },
-    "userGroup": "Engineering",
-    "version": "0.3-beta",
+    "userGroup": "All",
+    "tested": false,
     "lastUpdated": "2026-06-09",
     "status": "in-development",
-    "tags": [
-      "roads",
-      "deactivation",
-      "mapping"
-    ],
     "links": [
       {
         "label": "Design notes",

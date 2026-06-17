@@ -13,6 +13,7 @@
       "location",
       "contact",
       "userGroup",
+      "tested",
       "status",
       "lastUpdated"
     ],
@@ -37,9 +38,9 @@
         "description": "Where the tool lives: a network path or a repository/URL link.",
         "minLength": 1
       },
-      "howTo": {
+      "scriptLocation": {
         "type": "string",
-        "description": "Optional link to instructions / how-to-use documentation."
+        "description": "Optional path or URL to the underlying script source."
       },
       "contact": {
         "type": "object",
@@ -54,11 +55,15 @@
       "userGroup": {
         "type": "string",
         "description": "Intended audience / user group for the tool.",
-        "minLength": 1
+        "enum": ["All", "TOC", "TKA", "TKO"]
       },
-      "version": {
+      "tested": {
+        "type": "boolean",
+        "description": "Whether the tool has been tested and works."
+      },
+      "comments": {
         "type": "string",
-        "description": "Optional version label."
+        "description": "Optional free-text comments."
       },
       "lastUpdated": {
         "type": "string",
@@ -69,11 +74,6 @@
         "type": "string",
         "description": "Lifecycle status of the tool.",
         "enum": ["active", "deprecated", "in-development"]
-      },
-      "tags": {
-        "type": "array",
-        "description": "Keywords for search and filtering.",
-        "items": { "type": "string" }
       },
       "links": {
         "type": "array",

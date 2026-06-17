@@ -8,11 +8,18 @@
     "in-development": "In development",
   };
 
+  const USER_GROUP_LABELS = {
+    All: "All",
+    TOC: "TOC only",
+    TKA: "TKA only",
+    TKO: "TKO only",
+  };
+
   const state = {
     tools: [],
     search: "",
     activeStatuses: new Set(),
-    activeTags: new Set(),
+    activeGroups: new Set(),
     sort: "name-asc",
   };
 
@@ -20,7 +27,7 @@
     search: document.getElementById("search-input"),
     sort: document.getElementById("sort-select"),
     statusFilters: document.getElementById("status-filters"),
-    tagFilters: document.getElementById("tag-filters"),
+    groupFilters: document.getElementById("user-group-filters"),
     results: document.getElementById("results"),
     resultCount: document.getElementById("result-count"),
     clearFilters: document.getElementById("clear-filters"),
@@ -102,26 +109,22 @@
       els.statusFilters.appendChild(btn);
     });
 
-    const tagSet = new Set();
-    state.tools.forEach((t) => (t.tags || []).forEach((tag) => tagSet.add(tag)));
-    const tags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
-
-    els.tagFilters.querySelectorAll(".chip").forEach((c) => c.remove());
-    if (tags.length === 0) {
-      els.tagFilters.hidden = true;
-    }
-    tags.forEach((tag) => {
+    // User group filter chips. "All"-group tools always show, so only the
+    // specific groups get a chip. Selecting chips is inclusive.
+    const groups = ["TOC", "TKA", "TKO"];
+    els.groupFilters.querySelectorAll(".chip").forEach((c) => c.remove());
+    groups.forEach((group) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "chip";
-      btn.textContent = tag;
+      btn.textContent = USER_GROUP_LABELS[group] || group;
       btn.setAttribute("aria-pressed", "false");
       btn.addEventListener("click", () => {
-        toggleSet(state.activeTags, tag);
-        btn.setAttribute("aria-pressed", state.activeTags.has(tag));
+        toggleSet(state.activeGroups, group);
+        btn.setAttribute("aria-pressed", state.activeGroups.has(group));
         render();
       });
-      els.tagFilters.appendChild(btn);
+      els.groupFilters.appendChild(btn);
     });
   }
 
@@ -134,7 +137,7 @@
     state.search = "";
     els.search.value = "";
     state.activeStatuses.clear();
-    state.activeTags.clear();
+    state.activeGroups.clear();
     document
       .querySelectorAll('.chip[aria-pressed="true"]')
       .forEach((c) => c.setAttribute("aria-pressed", "false"));
@@ -148,10 +151,11 @@
       if (state.activeStatuses.size && !state.activeStatuses.has(t.status)) {
         return false;
       }
-      if (state.activeTags.size) {
-        const tags = t.tags || [];
-        for (const tag of state.activeTags) {
-          if (!tags.includes(tag)) return false;
+      // Inclusive user-group filter: "All" tools always show; otherwise the
+      // tool's group must be among the selected ones.
+      if (state.activeGroups.size) {
+        if (t.userGroup !== "All" && !state.activeGroups.has(t.userGroup)) {
+          return false;
         }
       }
       if (q) {
@@ -160,7 +164,6 @@
           t.description,
           t.userGroup,
           t.contact && t.contact.name,
-          (t.tags || []).join(" "),
         ]
           .filter(Boolean)
           .join(" ")
@@ -204,7 +207,7 @@
     els.results.hidden = list.length === 0;
 
     const filtersActive =
-      state.search || state.activeStatuses.size || state.activeTags.size;
+      state.search || state.activeStatuses.size || state.activeGroups.size;
     els.clearFilters.hidden = !filtersActive;
   }
 
@@ -213,11 +216,6 @@
     card.type = "button";
     card.className = "card";
     card.setAttribute("aria-label", `View details for ${tool.name}`);
-
-    const tags = (tool.tags || [])
-      .slice(0, 4)
-      .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
-      .join("");
 
     card.innerHTML = `
       <div class="card-head">
@@ -228,9 +226,8 @@
       </div>
       <p class="card-desc">${escapeHtml(tool.description || "")}</p>
       <div class="card-meta">${escapeHtml(
-        tool.userGroup ? "For: " + tool.userGroup : ""
+        tool.userGroup ? "For: " + (USER_GROUP_LABELS[tool.userGroup] || tool.userGroup) : ""
       )}</div>
-      <div class="card-tags">${tags}</div>
     `;
 
     card.addEventListener("click", () => openDetail(tool));
@@ -247,16 +244,33 @@
     const loc = safeUrl(tool.location);
     if (loc && /^https?:/i.test(loc)) {
       pushRow(
-        "Location",
+        "Tool location",
         `<a href="${escapeHtml(loc)}" target="_blank" rel="noopener noreferrer">${escapeHtml(
           tool.location
         )}</a>`
       );
     } else {
       pushRow(
-        "Location",
+        "Tool location",
         `<span class="code-path">${escapeHtml(tool.location || "")}</span>`
       );
+    }
+
+    if (tool.scriptLocation) {
+      const sloc = safeUrl(tool.scriptLocation);
+      if (sloc && /^https?:/i.test(sloc)) {
+        pushRow(
+          "Script location",
+          `<a href="${escapeHtml(sloc)}" target="_blank" rel="noopener noreferrer">${escapeHtml(
+            tool.scriptLocation
+          )}</a>`
+        );
+      } else {
+        pushRow(
+          "Script location",
+          `<span class="code-path">${escapeHtml(tool.scriptLocation)}</span>`
+        );
+      }
     }
 
     if (tool.contact) {
@@ -269,17 +283,12 @@
       pushRow("Contact", contactHtml);
     }
 
-    pushRow("User group", escapeHtml(tool.userGroup || ""));
-    pushRow("Version", escapeHtml(tool.version || ""));
-    pushRow("Last updated", escapeHtml(tool.lastUpdated || ""));
-
-    const howTo = safeUrl(tool.howTo);
-    if (howTo) {
-      pushRow(
-        "How to use",
-        `<a href="${escapeHtml(howTo)}" target="_blank" rel="noopener noreferrer">Instructions</a>`
-      );
+    pushRow("User group", escapeHtml(USER_GROUP_LABELS[tool.userGroup] || tool.userGroup || ""));
+    if (typeof tool.tested === "boolean") {
+      pushRow("Tested and works?", tool.tested ? "Yes" : "No");
     }
+    pushRow("Last updated", escapeHtml(tool.lastUpdated || ""));
+    pushRow("Other comments", escapeHtml(tool.comments || ""));
 
     let linksHtml = "";
     const links = (tool.links || []).filter((l) => l && l.url && safeUrl(l.url));

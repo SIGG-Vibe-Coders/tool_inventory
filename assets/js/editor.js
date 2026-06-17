@@ -18,6 +18,13 @@
     "in-development": "In development",
   };
 
+  const USER_GROUP_LABELS = {
+    All: "All",
+    TOC: "TOC only",
+    TKA: "TKA only",
+    TKO: "TKO only",
+  };
+
   const state = {
     tools: [],
     editingId: null, // id of tool being edited, or null when adding
@@ -129,7 +136,7 @@
         <td><span class="status-badge status-${escapeHtml(
           (tool.status || "").replace(/[^a-z-]/gi, "")
         )}">${escapeHtml(STATUS_LABELS[tool.status] || tool.status || "")}</span></td>
-        <td>${escapeHtml(tool.userGroup || "")}</td>
+        <td>${escapeHtml(USER_GROUP_LABELS[tool.userGroup] || tool.userGroup || "")}</td>
         <td>${escapeHtml(tool.lastUpdated || "")}</td>
         <td>
           <div class="row-actions">
@@ -207,18 +214,20 @@
       els.form.id.value = tool.id || "";
       els.form.description.value = tool.description || "";
       els.form.location.value = tool.location || "";
+      els.form.scriptLocation.value = tool.scriptLocation || "";
       els.form.contactName.value = (tool.contact && tool.contact.name) || "";
       els.form.contactEmail.value = (tool.contact && tool.contact.email) || "";
-      els.form.userGroup.value = tool.userGroup || "";
+      els.form.userGroup.value = tool.userGroup || "All";
       els.form.status.value = tool.status || "active";
-      els.form.version.value = tool.version || "";
+      els.form.tested.value =
+        tool.tested === true ? "yes" : tool.tested === false ? "no" : "";
       els.form.lastUpdated.value = tool.lastUpdated || "";
-      els.form.howTo.value = tool.howTo || "";
-      els.form.tags.value = (tool.tags || []).join(", ");
+      els.form.comments.value = tool.comments || "";
       (tool.links || []).forEach((l) => addLinkRow(l.label, l.url));
     } else {
       els.formTitle.textContent = "Add tool";
       els.form.status.value = "active";
+      els.form.userGroup.value = "All";
       els.form.lastUpdated.value = todayIso();
     }
 
@@ -275,10 +284,11 @@
       fail("contactEmail", "Enter a valid email address.");
 
     if (!data.userGroup) fail("userGroup", "User group is required.");
+    if (data.tested == null) fail("tested", "Please select Yes or No.");
     if (!data.lastUpdated) fail("lastUpdated", "Last updated date is required.");
 
-    if (data.howTo && !isValidUrlOrPath(data.howTo))
-      fail("howTo", "Enter a valid URL.");
+    if (data.scriptLocation && !isValidUrlOrPath(data.scriptLocation))
+      fail("scriptLocation", "Enter a URL (https://…) or a network path (\\\\… or /…).");
 
     return ok;
   }
@@ -290,31 +300,27 @@
     let id = els.form.id.value.trim();
     if (!id) id = slugify(name);
 
-    const tags = els.form.tags.value
-      .split(",")
-      .map((t) => t.trim())
-      .filter(Boolean);
-
     const contact = { name: els.form.contactName.value.trim() };
     const email = els.form.contactEmail.value.trim();
     if (email) contact.email = email;
 
+    const testedRaw = els.form.tested.value;
     const data = {
       id,
       name,
       description: els.form.description.value.trim(),
       location: els.form.location.value.trim(),
       contact,
-      userGroup: els.form.userGroup.value.trim(),
+      userGroup: els.form.userGroup.value,
+      tested: testedRaw === "yes" ? true : testedRaw === "no" ? false : null,
       status: els.form.status.value,
       lastUpdated: els.form.lastUpdated.value.trim(),
     };
 
-    const version = els.form.version.value.trim();
-    if (version) data.version = version;
-    const howTo = els.form.howTo.value.trim();
-    if (howTo) data.howTo = howTo;
-    if (tags.length) data.tags = tags;
+    const scriptLocation = els.form.scriptLocation.value.trim();
+    if (scriptLocation) data.scriptLocation = scriptLocation;
+    const comments = els.form.comments.value.trim();
+    if (comments) data.comments = comments;
     const links = collectLinks();
     if (links.length) data.links = links;
 
