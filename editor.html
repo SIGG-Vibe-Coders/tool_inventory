@@ -20,27 +20,31 @@
   <main class="container">
     <section class="editor-intro">
       <h2>How saving works</h2>
-      <p>
-        This page edits a working copy in your browser. Nothing is saved until you
-        download the file and upload it to GitHub. Your changes become a commit, so
-        everything stays reviewable and reversible.
+      <p id="intro-connected" hidden>
+        You're connected to GitHub. Make your changes below, then click
+        <strong>Save to GitHub</strong> &mdash; they go live in about a minute.
       </p>
-      <ol>
-        <li>Make your changes below (add, edit, or delete tools).</li>
-        <li>Click <strong>Download tools.json</strong>.</li>
-        <li>
-          In the GitHub repo, open <code>data/tools.json</code>, choose
-          <em>Upload / replace file</em>, and commit. (See the README for screenshots.)
-        </li>
-      </ol>
+      <p id="intro-disconnected">
+        Edit your tools below, then publish the changes back to GitHub. The quickest way is
+        to <strong>Connect to GitHub</strong> once &mdash; after that, <strong>Save to GitHub</strong>
+        publishes your changes in a single click. You can also <strong>Download</strong> the file
+        and upload it manually if you prefer.
+      </p>
     </section>
 
     <div class="editor-toolbar">
       <button type="button" id="add-tool" class="btn btn-primary">+ Add tool</button>
       <button type="button" id="reload" class="btn btn-ghost">Reload from file</button>
       <span class="spacer"></span>
+      <span id="gh-status" class="gh-status">
+        <span class="gh-dot" aria-hidden="true"></span>
+        <span id="gh-status-text">Not connected</span>
+        <button type="button" id="gh-connect" class="link-btn">Connect to GitHub</button>
+        <button type="button" id="gh-disconnect" class="link-btn" hidden>Disconnect</button>
+      </span>
       <span id="dirty-flag" class="dirty-flag" hidden>Unsaved changes</span>
-      <button type="button" id="download" class="btn btn-primary">Download tools.json</button>
+      <button type="button" id="save-github" class="btn btn-primary">Save to GitHub</button>
+      <button type="button" id="download" class="btn btn-ghost">Download</button>
     </div>
 
     <div id="load-error" class="form-banner" hidden>
@@ -62,6 +66,40 @@
       </table>
     </div>
   </main>
+
+  <!-- Connect to GitHub modal -->
+  <div id="connect-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close-connect></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="connect-title">
+      <button type="button" class="modal-close" data-close-connect aria-label="Close">&times;</button>
+      <h2 id="connect-title">Connect to GitHub</h2>
+      <p class="connect-intro">
+        Paste a GitHub <strong>fine-grained personal access token</strong> with
+        <em>Contents: Read and write</em> permission on this repository. It is stored only
+        in this browser (never uploaded anywhere) and lets <strong>Save to GitHub</strong>
+        commit your changes directly.
+      </p>
+      <ol class="connect-steps">
+        <li>
+          Open
+          <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">GitHub &rarr; fine-grained tokens</a>.
+        </li>
+        <li><strong>Resource owner:</strong> SIGG-Vibe-Coders</li>
+        <li><strong>Repository access:</strong> Only select repositories &rarr; <code>tool_inventory</code></li>
+        <li><strong>Permissions:</strong> Repository permissions &rarr; <strong>Contents</strong> &rarr; <em>Read and write</em></li>
+        <li>Generate the token, copy it, and paste it below.</li>
+      </ol>
+      <div id="connect-banner" class="form-banner" hidden></div>
+      <div class="form-field full">
+        <label for="gh-token">Personal access token</label>
+        <input type="password" id="gh-token" autocomplete="off" placeholder="github_pat_…" />
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-ghost" data-close-connect>Cancel</button>
+        <button type="button" id="gh-save-token" class="btn btn-primary">Connect</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Edit form modal -->
   <div id="form-modal" class="modal" hidden>

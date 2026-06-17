@@ -2,6 +2,16 @@
 (function () {
   "use strict";
 
+  // GitHub repo this editor commits to. Update if the repo moves.
+  const CONFIG = {
+    owner: "SIGG-Vibe-Coders",
+    repo: "tool_inventory",
+    branch: "main",
+    path: "data/tools.json",
+  };
+
+  const TOKEN_KEY = "sigg-ti-gh-token";
+
   const STATUS_LABELS = {
     active: "Active",
     deprecated: "Deprecated",
@@ -12,6 +22,7 @@
     tools: [],
     editingId: null, // id of tool being edited, or null when adding
     dirty: false,
+    saving: false,
   };
 
   const els = {
@@ -19,6 +30,7 @@
     addTool: document.getElementById("add-tool"),
     reload: document.getElementById("reload"),
     download: document.getElementById("download"),
+    saveGithub: document.getElementById("save-github"),
     dirtyFlag: document.getElementById("dirty-flag"),
     loadError: document.getElementById("load-error"),
     modal: document.getElementById("form-modal"),
@@ -27,6 +39,17 @@
     formBanner: document.getElementById("form-banner"),
     linksRows: document.getElementById("links-rows"),
     addLink: document.getElementById("add-link"),
+    // GitHub connection
+    ghStatus: document.getElementById("gh-status"),
+    ghStatusText: document.getElementById("gh-status-text"),
+    ghConnect: document.getElementById("gh-connect"),
+    ghDisconnect: document.getElementById("gh-disconnect"),
+    connectModal: document.getElementById("connect-modal"),
+    connectBanner: document.getElementById("connect-banner"),
+    tokenInput: document.getElementById("gh-token"),
+    saveToken: document.getElementById("gh-save-token"),
+    introConnected: document.getElementById("intro-connected"),
+    introDisconnected: document.getElementById("intro-disconnected"),
   };
 
   // ---------- Utilities ----------
@@ -325,10 +348,14 @@
     }
   });
 
+  // ---------- Serialize ----------
+  function serialize() {
+    return JSON.stringify(state.tools, null, 2) + "\n";
+  }
+
   // ---------- Download ----------
   function download() {
-    const json = JSON.stringify(state.tools, null, 2) + "\n";
-    const blob = new Blob([json], { type: "application/json" });
+    const blob = new Blob([serialize()], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -337,13 +364,216 @@
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
-    setDirty(false);
-    showToast("Downloaded tools.json — now upload it to GitHub.");
+    showToast("Downloaded tools.json — upload it to GitHub to publish.");
+  }
+
+  // ---------- GitHub: token storage ----------
+  function getToken() {
+    try {
+      return localStorage.getItem(TOKEN_KEY) || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function setToken(token) {
+    try {
+      localStorage.setItem(TOKEN_KEY, token);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function clearToken() {
+    try {
+      localStorage.removeItem(TOKEN_KEY);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function isConnected() {
+    return !!getToken();
+  }
+
+  // ---------- GitHub: API helpers ----------
+  function apiUrl(suffix) {
+    return `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/${suffix}`;
+  }
+
+  function ghHeaders(token) {
+    return {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    };
+  }
+
+  // UTF-8 safe base64 for the GitHub Contents API.
+  function utf8ToBase64(str) {
+    const bytes = new TextEncoder().encode(str);
+    let bin = "";
+    const chunk = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunk) {
+      bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+    }
+    return btoa(bin);
+  }
+
+  // ---------- GitHub: UI state ----------
+  function updateGhUi() {
+    const connected = isConnected();
+    els.ghStatus.classList.toggle("connected", connected);
+    els.ghStatusText.textContent = connected
+      ? `Connected to ${CONFIG.repo}`
+      : "Not connected";
+    els.ghConnect.hidden = connected;
+    els.ghDisconnect.hidden = !connected;
+    els.introConnected.hidden = !connected;
+    els.introDisconnected.hidden = connected;
+    els.saveGithub.disabled = state.saving;
+    els.saveGithub.textContent = state.saving ? "Saving…" : "Save to GitHub";
+  }
+
+  // ---------- GitHub: connect ----------
+  function openConnectModal() {
+    els.connectBanner.hidden = true;
+    els.tokenInput.value = "";
+    els.connectModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    els.tokenInput.focus();
+  }
+
+  function closeConnectModal() {
+    els.connectModal.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  function connectError(message) {
+    els.connectBanner.hidden = false;
+    els.connectBanner.textContent = message;
+  }
+
+  async function connect() {
+    const token = els.tokenInput.value.trim();
+    if (!token) {
+      connectError("Paste your token first.");
+      return;
+    }
+    els.saveToken.disabled = true;
+    els.saveToken.textContent = "Checking…";
+    try {
+      // Verify the token can read the data file in this repo.
+      const res = await fetch(
+        apiUrl(`contents/${CONFIG.path}?ref=${CONFIG.branch}`),
+        { headers: ghHeaders(token) }
+      );
+      if (res.status === 401) {
+        throw new Error("Token rejected (401). Check it was copied correctly.");
+      }
+      if (res.status === 404) {
+        throw new Error(
+          "Can't see this repository/file with that token. Check the repository access and Contents permission."
+        );
+      }
+      if (!res.ok) {
+        throw new Error("GitHub error (HTTP " + res.status + ").");
+      }
+      setToken(token);
+      closeConnectModal();
+      updateGhUi();
+      showToast("Connected to GitHub.");
+    } catch (err) {
+      connectError(err.message);
+    } finally {
+      els.saveToken.disabled = false;
+      els.saveToken.textContent = "Connect";
+    }
+  }
+
+  function disconnect() {
+    clearToken();
+    updateGhUi();
+    showToast("Disconnected from GitHub.");
+  }
+
+  // ---------- GitHub: save ----------
+  async function saveToGitHub() {
+    if (!isConnected()) {
+      openConnectModal();
+      return;
+    }
+    if (state.saving) return;
+    const token = getToken();
+    state.saving = true;
+    updateGhUi();
+    try {
+      // Get the current file SHA (required to update an existing file).
+      const metaRes = await fetch(
+        apiUrl(`contents/${CONFIG.path}?ref=${CONFIG.branch}`),
+        { headers: ghHeaders(token) }
+      );
+      if (metaRes.status === 401) {
+        throw new Error("Token rejected. Reconnect with a valid token.");
+      }
+      if (!metaRes.ok) {
+        throw new Error("Could not read the current file (HTTP " + metaRes.status + ").");
+      }
+      const meta = await metaRes.json();
+
+      const body = {
+        message: "Update tool inventory via editor",
+        content: utf8ToBase64(serialize()),
+        sha: meta.sha,
+        branch: CONFIG.branch,
+      };
+
+      const putRes = await fetch(apiUrl(`contents/${CONFIG.path}`), {
+        method: "PUT",
+        headers: ghHeaders(token),
+        body: JSON.stringify(body),
+      });
+
+      if (putRes.status === 409) {
+        throw new Error(
+          "The file changed on GitHub since you loaded it. Click “Reload from file”, redo your changes, then save again."
+        );
+      }
+      if (putRes.status === 403) {
+        throw new Error(
+          "Permission denied. Your token needs Contents: Read and write on this repository."
+        );
+      }
+      if (!putRes.ok) {
+        const e = await putRes.json().catch(() => ({}));
+        throw new Error(e.message || "Save failed (HTTP " + putRes.status + ").");
+      }
+
+      setDirty(false);
+      showToast("Saved to GitHub. The live site updates in about a minute.");
+    } catch (err) {
+      console.error("Save to GitHub failed:", err);
+      showToast("Save failed: " + err.message);
+    } finally {
+      state.saving = false;
+      updateGhUi();
+    }
   }
 
   // ---------- Events ----------
   els.addTool.addEventListener("click", () => openForm(null));
   els.download.addEventListener("click", download);
+  els.saveGithub.addEventListener("click", saveToGitHub);
+
+  els.ghConnect.addEventListener("click", openConnectModal);
+  els.ghDisconnect.addEventListener("click", disconnect);
+  els.saveToken.addEventListener("click", connect);
+  els.tokenInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") connect();
+  });
+  els.connectModal.addEventListener("click", (e) => {
+    if (e.target.hasAttribute("data-close-connect")) closeConnectModal();
+  });
 
   els.reload.addEventListener("click", () => {
     if (
@@ -360,7 +590,9 @@
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !els.modal.hidden) closeForm();
+    if (e.key !== "Escape") return;
+    if (!els.connectModal.hidden) closeConnectModal();
+    else if (!els.modal.hidden) closeForm();
   });
 
   window.addEventListener("beforeunload", (e) => {
@@ -371,5 +603,6 @@
   });
 
   // ---------- Init ----------
+  updateGhUi();
   loadTools();
 })();

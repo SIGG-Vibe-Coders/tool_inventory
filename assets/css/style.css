@@ -614,6 +614,38 @@ table.tool-table {
   font-size: 0.85rem;
 }
 
+/* ---------- GitHub connection ---------- */
+.gh-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.gh-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex: none;
+}
+
+.gh-status.connected .gh-dot { background: var(--status-active); }
+
+.connect-intro {
+  color: var(--text);
+  margin-top: 0;
+}
+
+.connect-steps {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.connect-steps li { margin-bottom: 0.35rem; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 640px) {
   .form-grid { grid-template-columns: 1fr; }
