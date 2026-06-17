@@ -1,65 +1,5 @@
 [
   {
-    "id": "riparian-buffer-tool",
-    "name": "Riparian Buffer Tool",
-    "description": "Generates riparian management area buffers around mapped streams and lakes for harvest planning. Reads stream classification and applies the appropriate buffer width per class.",
-    "location": "\\\\sigg-gis\\Tools\\RiparianBuffer\\RiparianBuffer.pyt",
-    "scriptLocation": "\\\\sigg-gis\\Tools\\RiparianBuffer\\src\\riparian_buffer.py",
-    "contact": {
-      "name": "Jane Smith",
-      "email": "jane.smith@example.gov.bc.ca"
-    },
-    "userGroup": "All",
-    "tested": true,
-    "lastUpdated": "2026-05-12",
-    "status": "active",
-    "links": [
-      {
-        "label": "Demo video",
-        "url": "https://example.com/videos/riparian-buffer"
-      },
-      {
-        "label": "Buffer width reference (PDF)",
-        "url": "https://example.com/docs/buffer-widths.pdf"
-      }
-    ]
-  },
-  {
-    "id": "block-area-report",
-    "name": "Block Area Report",
-    "description": "Summarizes net and gross area by cutblock and produces a formatted Excel report for submission.",
-    "location": "https://github.com/sigg/block-area-report",
-    "contact": {
-      "name": "Alex Chen",
-      "email": "test@gov.bc.ca"
-    },
-    "userGroup": "All",
-    "tested": true,
-    "lastUpdated": "2026-03-30",
-    "status": "active",
-    "links": []
-  },
-  {
-    "id": "road-deactivation-mapper",
-    "name": "Road Deactivation Mapper",
-    "description": "Prototype tool to track and map road deactivation status across operating areas. Still under active development; outputs may change.",
-    "location": "\\\\sigg-gis\\Tools\\_dev\\RoadDeactivation\\",
-    "contact": {
-      "name": "Priya Patel",
-      "email": "priya.patel@example.gov.bc.ca"
-    },
-    "userGroup": "All",
-    "tested": false,
-    "lastUpdated": "2026-06-09",
-    "status": "in-development",
-    "links": [
-      {
-        "label": "Design notes",
-        "url": "https://example.com/docs/road-deactivation-notes"
-      }
-    ]
-  },
-  {
     "id": "list-genie",
     "name": "List Genie",
     "description": "Converts text strings, or excel lists into def queries",
@@ -83,5 +23,46 @@
         "url": "https://bcgov.sharepoint.com/sites/FOR-BCTSGIS/_layouts/15/stream.aspx?id=%2Fsites%2FFOR%2DBCTSGIS%2FSIGG%20Document%20Library%2FVideos%2FLRM%20Tips%20and%20Tricks%2FExcel%20to%20LRM%20Query%20Builder%20to%20Working%20Set%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E72f66f4f%2Dcf29%2D4820%2D9bdd%2Dfed6383fc849"
       }
     ]
+  },
+  {
+    "id": "overlap-oracle",
+    "name": "Overlap Oracle",
+    "description": "Creates Excel/HTML of overlaping features against an input feature",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\Library\\South_Tools_ArcPro.atbx\\Overlap_Oracle",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-10",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Overlap_Oracle\\Supporting_files",
+    "comments": "Video needs updating, make sure to point out to run from no template",
+    "links": [
+      {
+        "label": "How to Video",
+        "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/Overlap%20Oracle.mp4?csf=1&web=1&e=DbLo1M&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+      },
+      {
+        "label": "Overlap Oracle 4 mapping - Audit mapping example",
+        "url": "https://bcgov.sharepoint.com/sites/FOR-BCTSGIS/_layouts/15/stream.aspx?id=%2Fsites%2FFOR%2DBCTSGIS%2FSIGG%20Document%20Library%2FVideos%2FSouth%20Area%20Tools%2FOveracle%20Oracle%204%20Overview%20mapping%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E78c0f1a8%2D3196%2D4533%2D9391%2D2a026200a03f"
+      }
+    ]
+  },
+  {
+    "id": "gar-analysis",
+    "name": "Gar Analysis",
+    "description": "Wildlife analyiss for the TOC BA",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\gar_analysis\\repo\\GARAnalysis.pyt",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-03",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\gar_analysis\\repo"
   }
 ]
