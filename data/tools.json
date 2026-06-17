@@ -63,6 +63,7 @@
     "tested": true,
     "status": "active",
     "lastUpdated": "2026-06-03",
-    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\gar_analysis\\repo"
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\gar_analysis\\repo",
+    "comments": "test"
   }
 ]
