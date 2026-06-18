@@ -352,5 +352,118 @@
     "status": "in-development",
     "lastUpdated": "2026-06-18",
     "comments": "This probably needs to be looked at again and updated"
+  },
+  {
+    "id": "in-memory-selection",
+    "name": "In memory Selection",
+    "description": "This selects a bunch of features given another feature and puts them all into memory and adds them to the map window. In memory features usually draw and run faster than normal features",
+    "location": "\\\\bctsdata.bcgov\\south_root\\Library\\South_Tools_ArcPro.atbx\\GIS_tools",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": false,
+    "status": "active",
+    "lastUpdated": "2026-06-18",
+    "scriptLocation": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\in_memory_selection",
+    "comments": "Need to test this post transition"
+  },
+  {
+    "id": "lidar-export-tool",
+    "name": "LiDAR Export tool",
+    "description": "Put in an AOI and it will clip all the lidar deliverables to to for the requestor",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Lidar_export_tool\\repo",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "in-development",
+    "lastUpdated": "2026-06-18",
+    "comments": "Need to make sure this works with the new lidar mosaics"
+  },
+  {
+    "id": "lidar-tools",
+    "name": "LiDAR Tools",
+    "description": "Varius tools to analyze the properties of Lidar and rasters",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Lidar_tools\\repo",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "in-development",
+    "lastUpdated": "2026-06-18",
+    "comments": "I need to revist this at some time and document what the hell i was doing here"
+  },
+  {
+    "id": "map-view-fix",
+    "name": "Map View fix",
+    "description": "This was just to strip out the embedded credentials of the map_view accounts from layers",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Map_view_fix",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": false,
+    "status": "deprecated",
+    "lastUpdated": "2026-06-18",
+    "comments": "Only worked in ArcMap, not needed anymore"
+  },
+  {
+    "id": "markdown-viewer",
+    "name": "Markdown Viewer",
+    "description": "You can drag a .md file into here and it will open and be in readable format",
+    "location": "https://mr-robotto-66.github.io/markdown-viewer/",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-18",
+    "scriptLocation": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Markdown_Reader"
+  },
+  {
+    "id": "mask-layer",
+    "name": "Mask Layer",
+    "description": "I have no idea what this does",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Mask_layer",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "active",
+    "lastUpdated": "2026-06-18",
+    "comments": "?????"
+  },
+  {
+    "id": "ogda-field-verification",
+    "name": "OGDA Field Verification",
+    "description": "This is for adding the the spatial to the unmanaged field verification layer in LRM",
+    "location": "\\\\bctsdata.bcgov\\lrm_root\\SPATIAL_TOOLS\\TAP_OldGrowth_Update",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-05-07",
+    "scriptLocation": "\\\\bctsdata.bcgov\\lrm_root\\SPATIAL_TOOLS\\TAP_OldGrowth_Update",
+    "comments": "Video is old (mxd), it has been updated since but it works more or less the same as in video just in ArcPro",
+    "links": [
+      {
+        "label": "How to Video",
+        "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/TAP%20OG%20Field%20Verification%20Tool.mp4?csf=1&web=1&e=wBpl7x&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+      }
+    ]
   }
 ]
