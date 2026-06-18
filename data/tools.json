@@ -187,5 +187,40 @@
     "lastUpdated": "2026-06-17",
     "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\CSO_Reporting\\CSO_reporting_master.accdb",
     "comments": "When making changes make them to the Master accdb then save as accde file an overwrite the file in the reporting folder"
+  },
+  {
+    "id": "operating-area-optimization-dashboard",
+    "name": "Operating Area Optimization Dashboard",
+    "description": "An interactive dashboard for TOC where they can move operating areas between field teams and see how that changes various metrics",
+    "location": "\\\\bctsdata.bcgov\\data\\toc_root\\Library\\Landbase_Analysis\\Op_Area_Optimization\\Dashboard_May_2026",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-05"
+  },
+  {
+    "id": "database-explorer",
+    "name": "Database Explorer",
+    "description": "A tool that allows you to create a data dictionary html dashboard from any gdb or sde",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Database_explorer\\repo",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": false,
+    "status": "active",
+    "lastUpdated": "2026-03-20",
+    "comments": "Need to look into this to make sure it still works properly post transtion",
+    "links": [
+      {
+        "label": "DBP06 Explorer",
+        "url": "\\\\bctsdata.bcgov\\south_root\\Library\\Database_Explorers\\DBP06_Explorer\\index.html"
+      }
+    ]
   }
 ]
