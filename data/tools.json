@@ -215,12 +215,142 @@
     "tested": false,
     "status": "active",
     "lastUpdated": "2026-03-20",
-    "comments": "Need to look into this to make sure it still works properly post transtion",
+    "comments": "Need to look into this to make sure it still works properly post transtion\n\nDBP06 Explorer here: \\\\bctsdata.bcgov\\south_root\\Library\\Database_Explorers\\DBP06_Explorer\\index.html\n\nCould use a how to video for this one",
     "links": [
       {
-        "label": "DBP06 Explorer",
-        "url": "\\\\bctsdata.bcgov\\south_root\\Library\\Database_Explorers\\DBP06_Explorer\\index.html"
+        "label": "BCGW Explorers",
+        "url": "https://mr-robotto-66.github.io/Database_Explorer/"
       }
     ]
+  },
+  {
+    "id": "eca-tool",
+    "name": "ECA tool",
+    "description": "Does an ECA Analysis given an input watershed and/or subbasins",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\ECA\\repo",
+    "contact": {
+      "name": "Kate Klimovich",
+      "email": "kate.klimovich@gov.bc.ca"
+    },
+    "userGroup": "TKO",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-04-15"
+  },
+  {
+    "id": "erase-features",
+    "name": "Erase Features",
+    "description": "Does the same thing as the Erase tool in ArcPro but on a basic licence level",
+    "location": "\\\\bctsdata.bcgov\\south_root\\Library\\South_Tools.tbx\\All Staff Tools",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": false,
+    "status": "active",
+    "lastUpdated": "2026-06-18",
+    "scriptLocation": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Erase_Features_Tool",
+    "comments": "Needs to be tested post transition to make sure it still works"
+  },
+  {
+    "id": "file-genie",
+    "name": "File Genie",
+    "description": "Analysis a given folder and tells you the biggest files, type of files, duplicates, etc. Good for folder cleanup",
+    "location": "\\\\bctsdata.bcgov\\south_root\\Library\\South_Tools.tbx\\All Staff Tools",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-18",
+    "scriptLocation": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\File_Genie",
+    "links": [
+      {
+        "label": "How to Video",
+        "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/File%20Genie.mp4?csf=1&web=1&e=cxCTsA&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+      }
+    ]
+  },
+  {
+    "id": "find-definition-query",
+    "name": "Find Definition Query",
+    "description": "This looks through all the layers in the table of contents and returns the def query applied to each layer. Easier than clicking through each layer",
+    "location": "\\\\bctsdata.bcgov\\south_root\\Library\\South_Tools.tbx\\All Staff Tools",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": false,
+    "status": "active",
+    "lastUpdated": "2026-06-18",
+    "scriptLocation": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Find_Definition_Query_tool",
+    "comments": "This almost certainly doesn't work and needs to be updated for ArcPro. Update video when doing this also",
+    "links": [
+      {
+        "label": "How to Video",
+        "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/Find%20Defintion%20Query%20Tool.mp4?csf=1&web=1&e=PNqPRq&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+      }
+    ]
+  },
+  {
+    "id": "fix-mxd-with-broken-road-layer",
+    "name": "fix mxd with broken road layer",
+    "description": "There was an issue a while back with a certain road layer that was causing mxd's to instantly crash. This tool dealt with that. No longer used",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Fix_mxd_with_broken_rd_layer",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "deprecated",
+    "lastUpdated": "2026-06-18",
+    "links": [
+      {
+        "label": "How to video",
+        "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/Fix%20Crashing%20MXD%20(Road%20layer%20issue).mp4?csf=1&web=1&e=UShM9q&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+      }
+    ]
+  },
+  {
+    "id": "fn-overlaps-tool",
+    "name": "FN Overlaps tool",
+    "description": "Input a feature and see all the First Nations areas that overlap with it",
+    "location": "\\\\bctsdata.bcgov\\south_root\\Library\\South_Tools.tbx\\All Staff Tools",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": false,
+    "status": "active",
+    "lastUpdated": "2026-06-18",
+    "scriptLocation": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\FN_Overlaps_tool",
+    "comments": "This probably doesn't work post transition and needs to be updated. Update video also",
+    "links": [
+      {
+        "label": "How to Video",
+        "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/First%20Nations%20Overlap%20Tool.mp4?csf=1&web=1&e=2fInr9&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+      }
+    ]
+  },
+  {
+    "id": "geometry-cleanup-tool",
+    "name": "Geometry Cleanup tool",
+    "description": "Input a feature class and it will cleanup the geometry to remove slivers",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Geometry_Cleanup_tool",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "in-development",
+    "lastUpdated": "2026-06-18",
+    "comments": "This probably needs to be looked at again and updated"
   }
 ]
