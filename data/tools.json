@@ -484,5 +484,19 @@
         "url": "https://axlesholtz.github.io/visual-impact-assessment/"
       }
     ]
+  },
+  {
+    "id": "bcts-data-extractor",
+    "name": "BCTS Data Extractor",
+    "description": "An ArcGIS Pro tool that pulls cutblock, silviculture unit (including WTRA/WTP), and road data from the DBP06 database based on user-supplied identifiers such as Licence ID, Block ID, UBI, or Road Name. It packages the selected features—optionally with configurable buffers around blocks and roads—into your choice of file geodatabase, shapefile, and/or styled KMZ outputs for Google Earth. Results can be delivered as a single combined dataset or automatically split into individual per-block, per-licence, or per-road folders to streamline sharing and field use.",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\BCTS_data_extractor_ArcPro\\repo",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-24"
   }
 ]
