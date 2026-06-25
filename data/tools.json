@@ -641,5 +641,25 @@
     "status": "active",
     "lastUpdated": "2026-06-25",
     "comments": "Only GIS Lead and Planning Officer allowed to touch this database, if that's not you hands off because you will probably mess it up"
+  },
+  {
+    "id": "overlap-area-tool",
+    "name": "Overlap Area Tool",
+    "description": "The Overlap Area tool compares two polygon feature layers in ArcGIS Pro and quantifies their spatial overlap. It reports overlap area and percentage statistics by feature, adds overlap and residual (non-overlapping) polygon layers to the map, and can optionally export a summary to Excel. The tool uses Basic-licence Pairwise geoprocessing and supports hectares, acres, square meters, or square kilometers.",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Overlap_Area_tool",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-03-18",
+    "links": [
+      {
+        "label": "Demo Video",
+        "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/Overlaps%20Area%20Tool.mp4?csf=1&web=1&e=v5Ukaj&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+      }
+    ]
   }
 ]
