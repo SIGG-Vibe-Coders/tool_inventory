@@ -432,7 +432,7 @@
   {
     "id": "mask-layer",
     "name": "Mask Layer",
-    "description": "I have no idea what this does",
+    "description": "creates a map mask polygon from a selected input layer and an optional buffer distance in meters. It subtracts the buffered feature area from a predefined outer extent, producing a focus mask that highlights the area of interest on the current map.",
     "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Mask_layer",
     "contact": {
       "name": "Daniel Otto",
@@ -440,9 +440,9 @@
     },
     "userGroup": "TOC",
     "tested": false,
-    "status": "active",
+    "status": "in-development",
     "lastUpdated": "2026-06-18",
-    "comments": "?????"
+    "comments": "This needs to be updated to work in ArcPro"
   },
   {
     "id": "ogda-field-verification",
@@ -549,5 +549,97 @@
         "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/Letter%20Genie.mp4?csf=1&web=1&e=B6fooa&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
       }
     ]
+  },
+  {
+    "id": "polygon-neighbors-but-better",
+    "name": "Polygon Neighbors But Better",
+    "description": "tool that identifies neighboring polygons in a feature class and calculates the area of overlap between adjacent features. It automates the Polygon Neighbors workflow by joining neighbor results to the input polygons and adding a new layer to the current map, leaving the original layer unchanged. The tool is useful for spatial analysis tasks that require knowing which polygons border one another and how much they overlap.\n\nThis is just a better version of the included Polygon neighbors tool in Arc",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Polygon_Neigbors_But_Better",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "deprecated",
+    "lastUpdated": "2026-06-25",
+    "comments": "This tool would need to be updated to work in ArcPro if we wanted to use again"
+  },
+  {
+    "id": "read-write-test",
+    "name": "read write test",
+    "description": "The Read/Write Test tool is an ArcGIS Pro script that evaluates the reliability and performance of a folder location by performing intensive file operations. It creates a test subfolder and generates 1,000 large text files, converts each to PostScript format, and repeatedly reads them back, with timed delays between operations to simulate realistic usage patterns. This tool is intended to verify that a network drive or workspace can sustain heavy read/write activity before it is used for production GIS work.",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Read_Write_test",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25",
+    "comments": "What was the purpose of creating this tool?"
+  },
+  {
+    "id": "sigg-tool-inventory",
+    "name": "SIGG tool Inventory",
+    "description": "a searchable web catalogue of scripts and GIS tools used across SIGG. Each entry describes what a tool does, where to find it, who owns it, and who it is intended for. The site is hosted on GitHub Pages and is maintained by collaborators through a simple editor—no separate server or database is required.\n\n*****IMPORTANT****** if you are editing the html file from the script location on the F drive you need to pull it down from github first otherwise you will overwrite the json file that has all the changes people have made since this tool is made to change that file directly on github.",
+    "location": "https://sigg-vibe-coders.github.io/tool_inventory/",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\SIGG_tool_Inventory"
+  },
+  {
+    "id": "silviweather",
+    "name": "Silviweather",
+    "description": "SilviWeather is a web-based weather monitoring dashboard for British Columbia silviculture operations. It pulls real-time and historical weather from the Open-Meteo API for pre-configured stations across Kamloops, Okanagan, and Kootenays business areas, and flags conditions that can affect planting and field work—frost, heat stress, drought, flood risk, and high wind—against user-configurable thresholds. The tool runs as a single static web page (no API keys, build step, or server required) and can be hosted on GitHub Pages for quick regional weather checks and alert logging.",
+    "location": "https://sigg-vibe-coders.github.io/silviWeather/",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Silviweather",
+    "comments": "Dan Arcand in TKA asked for this but never followed up if this was what he wanted. So not really sure if this is complete or how accurate this is"
+  },
+  {
+    "id": "somc-spatial-creator",
+    "name": "SOMC Spatial Creator",
+    "description": "** This tool is run after the excel is created in the SOMC Access Database\n\nArcPro Geoprocessing tool that builds a polygon feature class (SOMC) from an Excel spreadsheet listing species of management concern and their attributes (common name, status, BEC zone, etc.). For each row, it pulls spatial boundaries from BC Geographic Warehouse (BCGW) layers—either Biogeoclimatic Ecosystem Classification (BEC) zones or other referenced feature classes—and clips them to a user-defined area of interest. The tool merges those geometries with the species attributes, dissolves duplicate polygons, writes the result to a geodatabase, and compares the new output to any previous version to flag changes in species or schedule lists.",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\Library\\South_Tools_ArcPro.atbx\\GIS_tools\\SOMC Spatial Creator",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-04-15",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\SOMC_spatial_creator\\repo",
+    "comments": "Need a video for this whole process"
+  },
+  {
+    "id": "toc-somc-access-database",
+    "name": "TOC SOMC Access Database",
+    "description": "An Access Database to manage SOMC in TOC. Used in conjunction with the SOMC Spatial Creator Tool to create SOMC layer to be used in OPR's",
+    "location": "\\\\bctsdata.bcgov\\data\\toc_root\\Genus_Reporting\\SOMC\\SOMC.accdb",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25",
+    "comments": "Only Mike and Dan allowed to touch this database, if that's not you hands off because you will probably mess it up"
   }
 ]
