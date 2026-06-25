@@ -703,5 +703,47 @@
         "url": "https://github.com/Mr-Robotto-66/THLB_Genie_site"
       }
     ]
+  },
+  {
+    "id": "marten-habitat-analysis",
+    "name": "Marten Habitat analysis",
+    "description": "The Fly Hills Pine Marten Habitat Analysis tool is an ArcGIS Pro Python toolbox that supports pine marten habitat assessment in the Fly Hills area. It divides a user-defined area of interest into sub-units, then calculates reserve and forest land base metrics for each sub-unit—specifically combined OGMA, ERR, and WTRA reserve area (Part A), and CFLB plus mature CFLB with trees taller than 19.5 m after removing young forest and recent harvest (Part B). Results are written to a styled Excel report, a file geodatabase of the analysis layers, and an optional layer file for mapping.",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\TOC_specfic_Analysis\\Marten_Habitat_Analysis\\repo",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-18"
+  },
+  {
+    "id": "volume-calculator",
+    "name": "Volume Calculator",
+    "description": "An ArcGIS Pro geoprocessing tool that estimates timber volumes within a user-defined area of interest (AOI). It combines provincial Vegetation Resource Inventory (VRI) data with BCTS ForestView cruise volumes and harvesting status, preferring cruise data where available and zeroing volume on harvested blocks when that option is enabled. The tool produces a dissolved volume summary feature class and a formatted Excel spreadsheet with volumes broken down by species group.",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Volume_Calculator\\repo",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25"
+  },
+  {
+    "id": "waste-management-tool",
+    "name": "Waste Management Tool",
+    "description": "The BCTS Waste Management Spatial Extractor is an ArcGIS Pro Python Toolbox that pulls forestry spatial data from the Oracle SDE database for waste management workflows. Users enter a licence ID or one or more block IDs, and the tool extracts cut blocks, silviculture units, harvest units, falling corners, and roads for that area. Results can be exported as a File Geodatabase, shapefiles, and/or a merged KMZ for use in Google Earth or other GIS applications.",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Waste_management_tool\\repo",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25"
   }
 ]
