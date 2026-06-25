@@ -661,5 +661,47 @@
         "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/Overlaps%20Area%20Tool.mp4?csf=1&web=1&e=v5Ukaj&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
       }
     ]
+  },
+  {
+    "id": "spatial-archiver",
+    "name": "Spatial Archiver",
+    "description": "Spatial Archiver is an ArcGIS geoprocessing tool that preserves historical snapshots of forest block records from FORESTVIEW.SV_BLOCK (DBP06). For blocks in selected Timber Sale Office areas (TKA, TOC, TKO), it compares each block against the archived_blocks feature class in spatial_archive.gdb and creates a new archive record when spatial geometry, identifiers, areas, or status fields have changed—or when the block is not yet in the archive. Unchanged blocks are skipped, and prior archive versions are marked as HISTORICAL while the new record is stamped with archive metadata (date, user, and reason for archiving).",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Spatial_Archiver",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-04-04"
+  },
+  {
+    "id": "thlb-genie",
+    "name": "THLB Genie",
+    "description": "THLB Genie is an ArcGIS Pro toolbox that automates Timber Harvesting Land Base (THLB) and Crown Forest Land Base (CFLB) analysis for a user-defined area of interest. It reads constraint layers from an Excel spreadsheet (parks, OGMAs, riparian buffers, and similar), clips and applies them to the AOI, and produces a classified polygon output where each area is marked as available (Y) or excluded (N) for each constraint. The tool also calculates summary fields (THLB_Total, CFLB_Total) and can produce simplified “Lite” versions showing overall harvestable versus non-harvestable land.",
+    "location": "\\\\bctsdata.bcgov\\south_root\\GIS_Workspace\\Scripts_and_Tools\\THLB_Genie\\Repo",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25",
+    "links": [
+      {
+        "label": "Demo Video",
+        "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/THLB%20Genie.mp4?csf=1&web=1&e=gd1VP4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+      },
+      {
+        "label": "THLB Genie explanation Website",
+        "url": "https://mr-robotto-66.github.io/THLB_Genie_site/"
+      },
+      {
+        "label": "Github Repo",
+        "url": "https://github.com/Mr-Robotto-66/THLB_Genie_site"
+      }
+    ]
   }
 ]
