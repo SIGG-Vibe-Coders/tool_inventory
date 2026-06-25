@@ -504,5 +504,19 @@
         "url": "https://bcgov.sharepoint.com/:v:/r/sites/FOR-BCTSGIS/SIGG%20Document%20Library/Videos/South%20Area%20Tools/Data%20Extractor%20Demo%20.mp4?csf=1&web=1&e=B9gcR9&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
       }
     ]
+  },
+  {
+    "id": "xtools-kml",
+    "name": "Xtools KML",
+    "description": "An ArcGIS Pro toolbox that brings XTools Pro–style KML workflows into your GIS environment, making it easy to share map data in Google Earth and other KML viewers. Export Layer to KML turns a single feature layer into a polished KMZ with custom labels, HTML attribute popups, and folder organization, while Batch Export to KML handles multiple layers at once—either as separate files or one combined KMZ. KML to Feature Class completes the round trip by importing KML and KMZ files back into a geodatabase as point, line, and polygon feature classes with attributes preserved.",
+    "location": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\XTools_KML\\Script",
+    "contact": {
+      "name": "Kate Klimovich",
+      "email": "Kate.Klimovich@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-24"
   }
 ]
