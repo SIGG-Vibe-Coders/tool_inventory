@@ -745,5 +745,50 @@
     "tested": true,
     "status": "active",
     "lastUpdated": "2026-06-25"
+  },
+  {
+    "id": "add-sales-schedule-agol-link",
+    "name": "Add Sales Schedule AGOL link",
+    "description": "This ArcPro  tool adds a clickable “AGOL Dashboard” button to the top-right corner of every page in a PDF. You provide the input PDF and the ArcGIS Online dashboard URL; the tool draws the button, embeds a hyperlink, and updates the PDF in place. It is intended for Sales Schedule PDFs so readers can open the related AGOL dashboard directly from the document.",
+    "location": "\\\\bctsdata.bcgov\\data\\lrm_root\\SPATIAL_TOOLS\\Add_Sales_Schedule_AGOL_link",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "All",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25"
+  },
+  {
+    "id": "toc-wildlife-commitments",
+    "name": "TOC Wildlife Commitments",
+    "description": "This tool captures wildlife-related planning commitments from features you have selected on the map and adds them to the Wildlife feature classes in the Planning_Commitments geodatabase (Wildlife_Point, Wildlife_Line, or Wildlife_Polygon, depending on geometry). You enter attributes such as feature type, species, status, field team, TSL, planner, and comments; for polygons it also calculates area in hectares and stamps the creation date. If you provide a buffer distance, it creates a buffered polygon around the input feature and adds that to the Wildlife polygon layer with updated labeling.",
+    "location": "\\\\bctsdata.bcgov\\data\\toc_root\\General_User_Workspace\\!Spatial Tools\\!BCTS Toolbox.tbx\\Wildlife_Commitments",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": false,
+    "status": "active",
+    "lastUpdated": "2026-06-25",
+    "comments": "Layerfile here: \n\\\\bctsdata.bcgov\\data\\toc_root\\Layer_File\\ArcPro - Mapping -Planning\\TOC Wildlife_Commitments.lyrx"
+  },
+  {
+    "id": "toc-stakeholder-commitments-tool",
+    "name": "TOC Stakeholder Commitments Tool",
+    "description": "This tool captures stakeholder-related planning commitments from selected map features and adds them to the Stakeholders feature classes in the Planning_Commitments geodatabase (Stakeholder_Point, Stakeholder_Line, or Stakeholder_Polygon). It assigns a unique ID, records commitment details (stakeholder type, commitment type, field team, TSL, planner, comments), optional contact information, creation date, and hectares for polygons. You can optionally buffer the feature by a specified distance; buffered polygons are added to the Stakeholder polygon layer, and you can choose to append only the buffer and not the original geometry.",
+    "location": "\\\\bctsdata.bcgov\\data\\toc_root\\General_User_Workspace\\!Spatial Tools\\!BCTS Toolbox.tbx\\Stakeholders Commitments",
+    "contact": {
+      "name": "Daniel Otto",
+      "email": "daniel.otto@gov.bc.ca"
+    },
+    "userGroup": "TOC",
+    "tested": true,
+    "status": "active",
+    "lastUpdated": "2026-06-25",
+    "scriptLocation": "\\\\bctsdata.bcgov\\data\\toc_root\\Local_Data\\Planning_Commitments\\Supporting_Data\\Stakeholder_PC.py",
+    "comments": "Layerfile here:\n\\\\bctsdata.bcgov\\data\\toc_root\\Layer_File\\ArcPro - Mapping -Planning\\TOC Stakeholder Commitments.lyrx"
   }
 ]
