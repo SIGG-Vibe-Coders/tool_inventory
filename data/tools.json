@@ -109,10 +109,10 @@
     },
     "userGroup": "All",
     "tested": true,
-    "status": "active",
+    "status": "deprecated",
     "lastUpdated": "2026-05-13",
     "scriptLocation": "\\\\bctsdata.bcgov\\data\\south_root\\GIS_Workspace\\Scripts_and_Tools\\Block_export\\repo",
-    "comments": "Need a video for this one, could also be better. Kind of a shit tool"
+    "comments": "Was never a veyr user friendly tool. Modified the BCTS Data Extractor to do everyhting this tool did but in a better way"
   },
   {
     "id": "bookmarks2fc",
